@@ -1,0 +1,35 @@
+[
+    {
+        "_id": "e1",
+        "name": "Downtown 3v3 Basketball",
+        "sport": "Basketball",
+        "description": "Casual 3-on-3 pickup game at the rec center.",
+        "location": "Downtown Gym, NY",
+        "date": "2025-04-27T14:00:00Z",
+        "organizer": "u1",
+        "participants": [
+            "u1",
+            "u2"
+        ],
+        "teams": [
+            "t1"
+        ],
+        "venue": "v1"
+    },
+    {
+        "_id": "e2",
+        "name": "Sunday Soccer Match",
+        "sport": "Soccer",
+        "description": "Friendly 11v11 game.",
+        "location": "Mission Park, SF",
+        "date": "2025-04-28T10:00:00Z",
+        "organizer": "u2",
+        "participants": [
+            "u2"
+        ],
+        "teams": [
+            "t2"
+        ],
+        "venue": "v2"
+    }
+]

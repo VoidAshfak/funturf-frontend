@@ -1,0 +1,21 @@
+[
+    {
+        "_id": "c1",
+        "participants": [
+            "u1",
+            "u2"
+        ],
+        "messages": [
+            {
+                "sender": "u1",
+                "content": "Ready for the game Sunday?",
+                "timestamp": "2025-04-20T17:00:00Z"
+            },
+            {
+                "sender": "u2",
+                "content": "Totally! Let’s win it 💪",
+                "timestamp": "2025-04-20T17:05:00Z"
+            }
+        ]
+    }
+]

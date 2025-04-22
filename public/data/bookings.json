@@ -1,0 +1,18 @@
+[
+    {
+        "_id": "b1",
+        "user": "u1",
+        "event": "e1",
+        "venue": "v1",
+        "date": "2025-04-27T14:00:00Z",
+        "status": "confirmed"
+    },
+    {
+        "_id": "b2",
+        "user": "u2",
+        "event": "e2",
+        "venue": "v2",
+        "date": "2025-04-28T10:00:00Z",
+        "status": "pending"
+    }
+]

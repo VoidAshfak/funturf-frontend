@@ -1,0 +1,21 @@
+[
+    {
+        "_id": "t1",
+        "name": "Street Ballers",
+        "sport": "Basketball",
+        "members": [
+            "u1"
+        ],
+        "captain": "u1"
+    },
+    {
+        "_id": "t2",
+        "name": "Bay Kickers",
+        "sport": "Soccer",
+        "members": [
+            "u1",
+            "u2"
+        ],
+        "captain": "u2"
+    }
+]

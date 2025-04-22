@@ -1,0 +1,20 @@
+[
+    {
+        "_id": "p1",
+        "user": "u1",
+        "event": "e1",
+        "amount": 15.0,
+        "status": "paid",
+        "method": "card",
+        "timestamp": "2025-04-20T15:30:00Z"
+    },
+    {
+        "_id": "p2",
+        "user": "u2",
+        "event": "e2",
+        "amount": 10.0,
+        "status": "pending",
+        "method": "paypal",
+        "timestamp": "2025-04-19T13:45:00Z"
+    }
+]
