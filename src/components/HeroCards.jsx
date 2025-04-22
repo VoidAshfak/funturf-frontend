@@ -1,14 +1,16 @@
-import React from 'react'
+import Image from "next/image"
+
 
 const HeroCards = ({activeIndex}) => {
     return (
         <div className=" flex flex-col overflow-hidden bg-white border border-gray-100 shadow w-60 md:w-80 group rounded-xl transition-all duration-300 will-change-transform hover:shadow-lg hover:-translate-y-1 hover:z-10">
             <a href="#" className="flex shrink-0 aspect-w-4 aspect-h-3">
                 <img
-                    className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110"
-                    src={`https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/4/thumbnail-${activeIndex + 1}.png`}
-                    alt={`thumbnail-${activeIndex + 1}`}
+                    className="object-cover w-full h-60 transition-all duration-200 transform group-hover:scale-110"
+                    src={`assets/images/hero-${activeIndex + 1}.jpg`}
+                    alt={`image-${activeIndex + 1}`}
                 />
+                
             </a>
             <div className="flex-1 px-4 py-5 sm:p-6">
                 <a href="#">

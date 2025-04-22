@@ -34,7 +34,7 @@ const Navbar2 = () => {
                         >
                     </div>
                 </nav>
-                <nav x-show="expanded" x-collapse="">
+                {/* <nav x-show="expanded" x-collapse="">
                     <div className="px-1 pt-8 pb-4">
                         <div className="grid gap-y-6">
                             <a href="#" title="" className="flex items-center text-base font-medium text-gray-900 transition-all duration-200 focus:outline-none focus:ring-0">Features</a>
@@ -49,7 +49,7 @@ const Navbar2 = () => {
                             >
                         </div>
                     </div>
-                </nav>
+                </nav> */}
             </div>
         </header>
     )

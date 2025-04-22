@@ -16,42 +16,6 @@ import HeroCards from '@/components/HeroCards';
 export default function Hero() {
 
 
-    const scrollRef = useRef(null);
-    const [activeIndex, setActiveIndex] = useState(0);
-    const totalCards = 2;
-
-    const scrollToIndex = (index) => {
-        if (!scrollRef.current) return;
-        const cardWidth = scrollRef.current.firstChild?.clientWidth || 1;
-        const offset = index * (cardWidth + 24); // 24 = gap-6
-        scrollRef.current.scrollTo({ left: offset, behavior: 'smooth' });
-    };
-
-    const handleScroll = () => {
-        if (!scrollRef.current) return;
-        const scrollLeft = scrollRef.current.scrollLeft;
-        const cardWidth = scrollRef.current.firstChild?.clientWidth || 1;
-        const index = Math.round(scrollLeft / (cardWidth + 24));
-        setActiveIndex(index);
-    };
-
-    // Autoplay every 4 seconds
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const next = (activeIndex + 1) % totalCards;
-            scrollToIndex(next);
-        }, 5000);
-        return () => clearInterval(interval);
-    }, [activeIndex]);
-
-    // Listen to manual scroll
-    useEffect(() => {
-        const el = scrollRef.current;
-        if (!el) return;
-        el.addEventListener('scroll', handleScroll);
-        return () => el.removeEventListener('scroll', handleScroll);
-    }, []);
-
     return (
 
         <div className="">
@@ -130,7 +94,7 @@ export default function Hero() {
                         <Carousel
                             plugins={[
                                 Autoplay({
-                                    delay: 5000,
+                                    delay: 3000,
                                 }),
                             ]}
                             opts={{
