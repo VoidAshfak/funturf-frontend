@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+// import "./globals.css";
 import Navbar from "@/components/Navbar"
 import Navbar2 from "@/components/Navbar2";
 
@@ -20,14 +20,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
+        <div className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+            <nav className={"navbar"}>
+                <Navbar />
+            </nav>
 
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-            >
-                
-                {children}
-            </body>
-        </html>
+            {/* <nav className="sticky top-0 z-50">
+                    <Navbar2 />
+                </nav> */}
+            {children}
+        </div>
     );
 }
