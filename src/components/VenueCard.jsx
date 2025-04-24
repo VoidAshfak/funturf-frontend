@@ -21,7 +21,7 @@ export function VenueCard({ className, venue }) {
             <CardContent>
 
                 <img
-                    src={`assets/images/venue-${venue._id}.jpg`}
+                    src={venue?.venueImages[0]}
                     alt="Venue Image"
                     className="w-full h-[180px] object-cover rounded-2xl"
                 />

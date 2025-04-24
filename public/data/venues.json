@@ -14,7 +14,14 @@
         "availability": [
             "Mon-Fri 6am-10pm"
         ],
-        "venueImage": "/assets/images/venue-v1.jpg",
+        "venueImages": [
+            "/assets/images/venue-v1.jpg",
+            "/assets/images/1.jpg",
+            "/assets/images/2.jpg",
+            "/assets/images/3.jpg",
+            "/assets/images/4.jpg",
+            "/assets/images/5.jpg"
+        ],
         "rating": 4.8
     },
     {
@@ -31,7 +38,14 @@
         "availability": [
             "Weekends 8am-8pm"
         ],
-        "venueImage": "/assets/images/venue-v2.jpg",
+        "venueImages": [
+            "/assets/images/venue-v2.jpg",
+            "/assets/images/1.jpg",
+            "/assets/images/2.jpg",
+            "/assets/images/3.jpg",
+            "/assets/images/4.jpg",
+            "/assets/images/5.jpg"
+        ],
         "rating": 4.5
     }
 ]
