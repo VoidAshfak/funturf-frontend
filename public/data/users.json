@@ -5,8 +5,7 @@
         "email": "hoopmaster21@example.com",
         "fullName": "Jordan Miles",
         "bio": "Love pickup games and 3v3 tournaments.",
-        "profilePicture": "/avatars/jordan.png",
-        "location": "New York, NY",
+        "profilePicture": "/assets/images/player-1.png",
         "sports": [
             "Basketball",
             "Soccer"
@@ -26,8 +25,7 @@
         "email": "goalieq@example.com",
         "fullName": "Lisa Chen",
         "bio": "Soccer goalie & weekend warrior.",
-        "profilePicture": "/avatars/lisa.png",
-        "location": "San Francisco, CA",
+        "profilePicture": "/assets/images/player-2.png",
         "sports": [
             "Soccer"
         ],

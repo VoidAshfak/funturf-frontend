@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { LogIn } from "lucide-react"
 
 export function LoginForm({
     className,
@@ -36,7 +37,8 @@ export function LoginForm({
                     </div>
                     <Input id="password" type="password" required />
                 </div>
-                <Button type="submit" className="w-full">
+                <Button type="submit" className="w-full bg-green-600">
+                    <LogIn className="mr-2 h-4 w-4" />
                     Login
                 </Button>
                 <div
