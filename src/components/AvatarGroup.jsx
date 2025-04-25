@@ -4,11 +4,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function AvatarGroup() {
     const users = [
-        { name: "Fede", image: "assets/avatars/player-1.jpg" },
-        { name: "Luca", image: "assets/avatars/player-2.jpg" },
-        { name: "Jude", image: "assets/avatars/player-3.jpg" },
-        { name: "Dani", image: "assets/avatars/player-4.jpg" },
-        { name: "Brahim", image: "assets/avatars/player-5.jpg" },
+        { name: "Fede", image: "/assets/avatars/player-1.jpg" },
+        { name: "Luca", image: "/assets/avatars/player-2.jpg" },
+        { name: "Jude", image: "/assets/avatars/player-3.jpg" },
+        { name: "Dani", image: "/assets/avatars/player-4.jpg" },
+        { name: "Brahim", image: "/assets/avatars/player-5.jpg" },
     ];
 
     return (

@@ -33,7 +33,7 @@ const EventCard = ({ className, event }) => {
             </CardContent>
             <CardFooter className="flex justify-between">
                 <div>
-                    <img src={`assets/icons/${event?.sport.toLowerCase()}.png`} alt="football" className="w-6 h-6" />
+                    <img src={`/assets/icons/${event?.sport.toLowerCase()}.png`} alt="football" className="w-6 h-6" />
                 </div>
                 <div className="flex items-center">
                     <CalendarDays className="mr-2 w-5 h-5" />

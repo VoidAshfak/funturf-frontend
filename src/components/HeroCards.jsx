@@ -7,7 +7,7 @@ const HeroCards = ({activeIndex}) => {
             <a href="#" className="flex shrink-0 aspect-w-4 aspect-h-3">
                 <img
                     className="object-cover w-full h-60 transition-all duration-200 transform group-hover:scale-110"
-                    src={`assets/images/hero-${activeIndex + 1}.jpg`}
+                    src={`/assets/images/hero-${activeIndex + 1}.jpg`}
                     alt={`image-${activeIndex + 1}`}
                 />
                 
