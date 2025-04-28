@@ -5,15 +5,24 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { LogIn } from "lucide-react"
+import {useAppDispatch, useAppSelector} from "@/lib/hooks"
+import { login } from "@/lib/features/auth/authSlice"
 
 export function LoginForm({
     className,
     ...props
 }) {
 
+    const isLogin = useAppSelector((state) => state.auth.isUserLogin)
+    const dispatch = useAppDispatch()
+
     const handleLogin = () => {
-        // e.preventDefault();
-        console.log("Login");
+        dispatch(login(
+            {
+                name: "Asif",
+                type: "PLAYER"
+            }
+        ))
     }
     return (
         <form action={handleLogin} className={cn("flex flex-col gap-6", className)} {...props}>
