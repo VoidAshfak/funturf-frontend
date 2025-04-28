@@ -16,7 +16,7 @@ const FeaturedEvents = async () => {
         <div className='grid md:grid-cols-4 sm:grid-cols-2 gap-5 p-10 bg-gradient-to-b from-green-100 to-fuchsia-100'>
             {events.map((event) => (
 
-                <Link href={`/venues/${event._id}`} key={event._id}>
+                <Link href={`/events/${event._id}`} key={event._id}>
                     <EventCard  event={event}/>
                 </Link>
             ))}
