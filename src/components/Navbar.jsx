@@ -1,11 +1,11 @@
 "use client"
 
-import * as React from "react"
 import Link from "next/link"
-
 import { cn } from "@/lib/utils"
-// import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
+import { useAppSelector, useAppDispatch } from "@/lib/hooks"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {logout} from "@/lib/features/auth/authSlice"
 
 import {
     NavigationMenu,
@@ -16,6 +16,29 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+
+import {
+    LogOut,
+    Settings,
+    User,
+    UserPlus,
+    Users,
+} from "lucide-react"
+
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuPortal,
+    DropdownMenuSeparator,
+    DropdownMenuShortcut,
+    DropdownMenuSub,
+    DropdownMenuSubContent,
+    DropdownMenuSubTrigger,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 const components = [
     {
@@ -56,6 +79,10 @@ const components = [
 ]
 
 export default function Navbar({ className }) {
+
+    const userLoggedIn = useAppSelector((state) => state.auth.isUserLogin)
+    
+
     return (
         <>
             <Link href={"/"} className="w-10 ml-14">
@@ -124,31 +151,38 @@ export default function Navbar({ className }) {
                             </NavigationMenuLink>
                         </NavigationMenuItem>
 
-                        <NavigationMenuItem>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/docs">
-                                Documentation
-                            </NavigationMenuLink>
-                        </NavigationMenuItem>
-
 
                     </NavigationMenuList>
                 </div>
             </NavigationMenu>
 
+
             <div className="mr-10">
-                <Button
-                    className="mx-2"
-                    asChild
-                >
-                    <Link href="/login">Login</Link>
-                </Button>
-                <Button
-                    className="mx-2"
-                    variant='outline'
-                    asChild
-                >
-                    <Link href="/signup">Signup</Link>
-                </Button>
+                {!userLoggedIn ? (
+                    <>
+                        <div>
+                            <Button
+                                className="mx-2"
+                                asChild
+                            >
+                                <Link href="/login">Login</Link>
+                            </Button>
+                            <Button
+                                className="mx-2"
+                                variant='outline'
+                                asChild
+                            >
+                                <Link href="/signup">Signup</Link>
+                            </Button>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <div className="">
+                            <ProfileMenu />
+                        </div>
+                    </>
+                )}
             </div>
 
         </>
@@ -177,3 +211,53 @@ const ListItem = ({ className, title, children, ...props }, ref) => {
 }
 
 // ListItem.displayName = "ListItem"
+
+
+function ProfileMenu() {
+    const dispatch = useAppDispatch()
+    return (
+        <div>
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                    <Avatar className={"cursor-pointer h-10 w-10"}>
+                        <AvatarImage src="https://github.com/shadcn.png" alt="@profile" />
+                        <AvatarFallback>PF</AvatarFallback>
+                    </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56 mr-6">
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuGroup>
+                        <DropdownMenuItem>
+                            <User />
+                            <span>Profile</span>
+                            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                        </DropdownMenuItem>
+
+                        <DropdownMenuItem>
+                            <Settings />
+                            <span>Settings</span>
+                            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                        </DropdownMenuItem>
+
+                    </DropdownMenuGroup>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuGroup>
+                        <DropdownMenuItem>
+                            <Users />
+                            <span>Team</span>
+                        </DropdownMenuItem>
+
+
+                    </DropdownMenuGroup>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => dispatch(logout())}>
+                        <LogOut className="text-red-400"/>
+                        <span className="text-red-400" >Log out</span>
+                        <DropdownMenuShortcut className="text-red-400">⇧⌘Q</DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
+        </div>
+    )
+}

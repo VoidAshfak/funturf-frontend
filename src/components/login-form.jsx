@@ -7,14 +7,15 @@ import { Label } from "@/components/ui/label"
 import { LogIn } from "lucide-react"
 import {useAppDispatch, useAppSelector} from "@/lib/hooks"
 import { login } from "@/lib/features/auth/authSlice"
+import { useRouter } from "next/navigation"
 
 export function LoginForm({
     className,
     ...props
 }) {
 
-    const isLogin = useAppSelector((state) => state.auth.isUserLogin)
     const dispatch = useAppDispatch()
+    const router = useRouter()
 
     const handleLogin = () => {
         dispatch(login(
@@ -23,6 +24,7 @@ export function LoginForm({
                 type: "PLAYER"
             }
         ))
+        router.push("/")
     }
     return (
         <form action={handleLogin} className={cn("flex flex-col gap-6", className)} {...props}>
