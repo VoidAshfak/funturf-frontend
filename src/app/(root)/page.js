@@ -1,6 +1,7 @@
 import FeaturedTurfs from "@/sections/FeaturedTurfs";
 import FeaturedEvents from "@/sections/FeaturedEvents";
 import Hero from "@/sections/Hero";
+import Banner from "@/sections/Banner";
 
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
             <Hero />
             <FeaturedTurfs />
             <FeaturedEvents />
+            <Banner />
         </>
     );
 }

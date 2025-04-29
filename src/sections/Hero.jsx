@@ -19,7 +19,7 @@ export default function Hero() {
     return (
 
         <div className="">
-            <section className="relative bg-green-50">
+            <section className="relative">
 
                 <div className="relative z-10 px-4 py-12 sm:py-16 sm:px-6 lg:px-4 lg:max-w-5/6 lg:mx-auto lg:py-16 xl:py-24 lg:grid lg:grid-cols-2">
 
@@ -27,10 +27,25 @@ export default function Hero() {
                     <div className="lg:pr-8">
                         <div className="max-w-md mx-auto sm:max-w-lg lg:mx-0">
                             <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
-                                Community of designers <span className="inline"><img className="inline w-auto h-8 sm:h-10 lg:h-12" src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/4/shape-1.svg" alt="shape-1" /></span> made by designers
-                                <span className="inline"><img className="inline w-auto h-8 sm:h-10 lg:h-11" src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/4/shape-2.svg" alt="shape-2" /></span>
+                                Built for players
+                                <span className="inline px-2">
+                                    <img
+                                        className="inline w-auto h-8 sm:h-10 lg:h-12"
+                                        src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/4/shape-1.svg" alt="shape-1"
+                                    />
+                                </span>
+                                Made by players
+                                <span className="inline px-2">
+                                    <img
+                                        className="inline w-auto h-8 sm:h-10 lg:h-11"
+                                        src="https://landingfoliocom.imgix.net/store/collection/clarity-blog/images/hero/4/shape-2.svg" alt="shape-2"
+                                    />
+                                </span>
                             </h1>
-                            <p className="mt-6 text-base font-normal leading-7 text-gray-900">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vehicula massa in enim luctus. Rutrum arcu.</p>
+
+                            <p className="mt-6 text-base font-normal leading-7 text-gray-900">
+                            Book matches, join teams, and explore venues near you with Funturf.
+                            </p>
 
                             <svg className="w-auto h-4 mt-8 text-gray-300" viewBox="0 0 172 16" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <line y1="-0.5" x2="18.0278" y2="-0.5" transform="matrix(-0.5547 0.83205 0.83205 0.5547 11 1)"></line>
@@ -102,14 +117,14 @@ export default function Hero() {
                                 align: "start"
                             }}
                         >
-                            <div className="absolute top-0 right-0 h-full w-1/2 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
+                            <div className="absolute top-0 right-0 h-full w-4/5 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
                             <CarouselContent>
                                 {Array.from({ length: 3 }).map((_, index) => (
                                     <CarouselItem
                                         className="basis-1/2 mx-2 px-4"
                                         key={index}>
                                         <div className="">
-                                            <HeroCards key={index} activeIndex={index}/>
+                                            <HeroCards key={index} activeIndex={index} />
                                             {/* <p>{index + 1}</p> */}
                                         </div>
                                     </CarouselItem>
