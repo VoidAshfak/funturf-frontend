@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from "next/link"
 import EventCard from "@/components/EventCard"
+import CommentsSection from "@/components/CommentsSection"
 import {
     Tabs,
     TabsContent,
@@ -35,12 +36,12 @@ const EventDetails = async ({ params }) => {
                                         <p className=" text-gray-600"> Organized By {event?.organizer}</p>
                                     </div>
                                 </div>
-                                <div>
+                                <Link href={`/profile/${event?.organizer}`}>
                                     <Avatar className={"cursor-pointer h-14 w-14"}>
                                         <AvatarImage src="https://github.com/shadcn.png" alt="@profile" />
                                         <AvatarFallback>PF</AvatarFallback>
                                     </Avatar>
-                                </div>
+                                </Link>
                             </div>
 
                             <div className="flex items-center justify-start gap-6 pb-4">
@@ -51,19 +52,31 @@ const EventDetails = async ({ params }) => {
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-start gap-6 pb-4">
-                                <MapPin className="mr-2 font-bold w-10 h-10" />
+                            <div className="flex items-center justify-between gap-6">
 
-                                <p> {event?.location} </p>
-                                <Button className={"cursor-pointer"} variant={"outline"}>
-                                    View Map
-                                    <ArrowUpRight />
-                                </Button>
+                                <div className="flex items-center justify-start gap-2 ">
+                                    <MapPin className="mr-2 font-bold w-10 h-10" />
+
+                                    <p> {event?.location} </p>
+                                    <Button className={"cursor-pointer"} variant={"outline"}>
+                                        View Map
+                                        <ArrowUpRight />
+                                    </Button>
+                                </div>
+
+                                <div>
+                                    <Button
+                                        className={"bg-green-500 hover:bg-green-600 p-5 font-bold text-xl cursor-pointer"}
+                                        variant={"outline"}
+                                    >
+                                        <Plus /> Request
+                                    </Button>
+                                </div>
                             </div>
                         </div>
 
                         <div className="border border-gray-300 p-10 rounded-xl">
-                            <Tab />
+                            <Tab event={event} />
                         </div>
                     </div>
 
@@ -94,22 +107,6 @@ const EventDetails = async ({ params }) => {
                         ))}
                     </div>
                 </div>
-
-                <div className="sticky flex items-center justify-end pr-20 gap-6 bottom-0 h-20 w-full backdrop-blur-sm bg-green-200/30">
-                    <Button 
-                        className={"bg-green-500 hover:bg-green-600 p-5 font-bold text-xl cursor-pointer"}
-                        variant={"outline"}
-                    >
-                        <Plus /> Request
-                    </Button>
-
-                    {/* <Button 
-                        className={"p-5 font-bold text-xl cursor-pointer"}
-                        variant={"outline"}
-                    >
-                        Comment
-                    </Button> */}
-                </div>
             </div>
         </>
     )
@@ -119,7 +116,12 @@ export default EventDetails
 
 
 
-const Tab = () => {
+const Tab = ({ event }) => {
+    const currentUser = {
+        id: "u1",
+        name: "Alice",
+        avatar: "https://i.pravatar.cc/150?img=1",
+    }
     return (
         <Tabs defaultValue="rules" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
@@ -127,13 +129,13 @@ const Tab = () => {
                 <TabsTrigger value="comments">Comments</TabsTrigger>
             </TabsList>
             <TabsContent value="rules">
-                <div className="h-[700px]">
-                    Tab - 1
+                <div className="p-2 flex items-center justify-center bg-amber-100 ">
+                    <p>{event?.description}</p>
                 </div>
             </TabsContent>
             <TabsContent value="comments">
                 <div className="">
-                    Tab - 2
+                    <CommentsSection currentUser={currentUser} />
                 </div>
             </TabsContent>
         </Tabs>

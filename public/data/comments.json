@@ -1,0 +1,125 @@
+[
+    {
+        "_id": "c1",
+        "postId": "post1",
+        "parentId": null,
+        "author": {
+            "id": "u1",
+            "name": "Alice",
+            "avatar": "https://i.pravatar.cc/150?img=1"
+        },
+        "content": "This is the first comment on the post!",
+        "likes": [
+            "u2",
+            "u3"
+        ],
+        "createdAt": "2025-04-28T09:15:00Z",
+        "updatedAt": "2025-04-28T09:15:00Z"
+    },
+    {
+        "_id": "c2",
+        "postId": "post1",
+        "parentId": null,
+        "author": {
+            "id": "u2",
+            "name": "Bob",
+            "avatar": "https://i.pravatar.cc/150?img=2"
+        },
+        "content": "Great post—thanks for sharing!",
+        "likes": [],
+        "createdAt": "2025-04-28T10:05:00Z",
+        "updatedAt": "2025-04-28T10:05:00Z"
+    },
+    {
+        "_id": "c3",
+        "postId": "post1",
+        "parentId": "c1",
+        "author": {
+            "id": "u3",
+            "name": "Charlie",
+            "avatar": "https://i.pravatar.cc/150?img=3"
+        },
+        "content": "Replying to Alice—totally agree!",
+        "likes": [
+            "u1"
+        ],
+        "createdAt": "2025-04-28T11:20:00Z",
+        "updatedAt": "2025-04-28T11:20:00Z"
+    },
+    {
+        "_id": "c4",
+        "postId": "post1",
+        "parentId": "c3",
+        "author": {
+            "id": "u1",
+            "name": "Alice",
+            "avatar": "https://i.pravatar.cc/150?img=1"
+        },
+        "content": "Thanks @Charlie! 😊",
+        "likes": [],
+        "createdAt": "2025-04-28T11:45:00Z",
+        "updatedAt": "2025-04-28T11:45:00Z"
+    },
+    {
+        "_id": "c5",
+        "postId": "post1",
+        "parentId": "c2",
+        "author": {
+            "id": "u4",
+            "name": "Dave",
+            "avatar": "https://i.pravatar.cc/150?img=4"
+        },
+        "content": "I have a question about this—can you elaborate?",
+        "likes": [
+            "u2"
+        ],
+        "createdAt": "2025-04-28T12:00:00Z",
+        "updatedAt": "2025-04-28T12:00:00Z"
+    },
+    {
+        "_id": "c6",
+        "postId": "post1",
+        "parentId": "c5",
+        "author": {
+            "id": "u1",
+            "name": "Alice",
+            "avatar": "https://i.pravatar.cc/150?img=1"
+        },
+        "content": "Sure, @Dave—here’s a bit more detail…",
+        "likes": [],
+        "createdAt": "2025-04-28T12:30:00Z",
+        "updatedAt": "2025-04-28T12:30:00Z"
+    },
+    {
+        "_id": "c7",
+        "postId": "post1",
+        "parentId": null,
+        "author": {
+            "id": "u5",
+            "name": "Eve",
+            "avatar": "https://i.pravatar.cc/150?img=5"
+        },
+        "content": "Nice discussion happening here!",
+        "likes": [
+            "u1",
+            "u2",
+            "u3"
+        ],
+        "createdAt": "2025-04-28T13:00:00Z",
+        "updatedAt": "2025-04-28T13:00:00Z"
+    },
+    {
+        "_id": "c8",
+        "postId": "post1",
+        "parentId": "c7",
+        "author": {
+            "id": "u2",
+            "name": "Bob",
+            "avatar": "https://i.pravatar.cc/150?img=2"
+        },
+        "content": "Thanks @Eve!",
+        "likes": [],
+        "createdAt": "2025-04-28T13:15:00Z",
+        "updatedAt": "2025-04-28T13:15:00Z"
+    }
+]
