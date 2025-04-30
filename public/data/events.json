@@ -22,7 +22,8 @@
         "isBooked": true,
         "booking": "b1",
         "playersRequired": 2,
-        "isPublic": true
+        "isPublic": true,
+        "rules": "Rules for event 1"
     },
     {
         "_id": "e2",
@@ -46,7 +47,8 @@
         "isBooked": false,
         "booking": null,
         "playersRequired": 12,
-        "isPublic": false
+        "isPublic": false,
+        "rules": "Rules for event 1"
     },
     {
         "_id": "e3",
@@ -71,7 +73,8 @@
         "isBooked": true,
         "booking": "b1",
         "playersRequired": 2,
-        "isPublic": true
+        "isPublic": true,
+        "rules": "Rules for event 1"
     },
     {
         "_id": "e4",
@@ -95,7 +98,8 @@
         "isBooked": false,
         "booking": null,
         "playersRequired": 12,
-        "isPublic": false
+        "isPublic": false,
+        "rules": "Rules for event 1"
     },
     {
         "_id": "e5",
@@ -120,6 +124,7 @@
         "isBooked": true,
         "booking": "b1",
         "playersRequired": 2,
-        "isPublic": true
+        "isPublic": true,
+        "rules": "Rules for event 1"
     }
 ]

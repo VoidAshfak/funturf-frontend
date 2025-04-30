@@ -129,8 +129,8 @@ const Tab = ({ event }) => {
                 <TabsTrigger value="comments">Comments</TabsTrigger>
             </TabsList>
             <TabsContent value="rules">
-                <div className="p-2 flex items-center justify-center bg-amber-100 ">
-                    <p>{event?.description}</p>
+                <div className="p-4 flex items-center bg-gray-50 rounded-2xl">
+                    <p className="text-left">{event?.rules}</p>
                 </div>
             </TabsContent>
             <TabsContent value="comments">
