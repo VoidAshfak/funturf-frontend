@@ -1,6 +1,5 @@
 "use client"
 
-import { useRef, useState, useEffect } from 'react';
 import {
     Carousel,
     CarouselContent,
@@ -8,7 +7,6 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Card, CardContent } from "@/components/ui/card"
 import Autoplay from "embla-carousel-autoplay"
 import HeroCards from '@/components/HeroCards';
 
@@ -18,7 +16,7 @@ export default function Hero() {
 
     return (
 
-        <div className="">
+        <div className="bg-gradient-to-r from-green-100 via-yellow-50 to-green-100 mb-10 rounded-b-[50px]">
             <section className="relative">
 
                 <div className="relative z-10 px-4 py-12 sm:py-16 sm:px-6 lg:px-4 lg:max-w-5/6 lg:mx-auto lg:py-16 xl:py-24 lg:grid lg:grid-cols-2">
@@ -77,7 +75,7 @@ export default function Hero() {
                             <p className="mt-8 text-base font-bold text-gray-900">Search your favourite turf ground</p>
 
                             <form action="#" method="post" className="relative mt-4">
-                                <div className="absolute transitiona-all duration-1000 opacity-30 inset-0 bg-gradient-to-r from-[#78e393] via-[#46d761] to-[#92ed7e] rounded-xl blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
+                                <div className="absolute transitiona-all duration-1000 opacity-30 inset-0 bg-gradient-to-r from-[#5157ffde] via-[#f95959] to-[#d8ff3d] rounded-xl blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
                                 <div className="relative space-y-4 sm:flex sm:space-y-0 sm:items-end">
                                     <div className="flex-1">
                                         <label htmlFor="search-text" className="sr-only">Turf Name</label>
@@ -117,7 +115,7 @@ export default function Hero() {
                                 align: "start"
                             }}
                         >
-                            <div className="absolute top-0 right-0 h-full w-4/5 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
+                            <div className="absolute top-0 right-0 h-full  pointer-events-none z-10" />
                             <CarouselContent>
                                 {Array.from({ length: 3 }).map((_, index) => (
                                     <CarouselItem
