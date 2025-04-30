@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { useAppSelector, useAppDispatch } from "@/lib/hooks"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { logout } from "@/lib/features/auth/authSlice"
+import { useRouter, usePathname } from "next/navigation"
 
 import {
     NavigationMenu,
@@ -40,8 +41,8 @@ import {
 
 export default function Navbar({ className }) {
 
-    const userLoggedIn = useAppSelector((state) => state.auth.isUserLogin)
-
+    const {isUserLogin: userLoggedIn, userData} = useAppSelector((state) => state.auth)
+    const pathName = usePathname()
 
     return (
         <>
@@ -53,7 +54,7 @@ export default function Navbar({ className }) {
                 <NavigationMenuList>
 
                     <NavigationMenuItem>
-                        <NavigationMenuLink href="/events" className={"hover:backdrop-blur-sm hover:bg-green-700/10"} >
+                        <NavigationMenuLink href="/events" className={`${(pathName === "/events" || (pathName.startsWith("/events") && pathName !== "/" )) ? "backdrop-blur-sm bg-green-700/10" : ""}`} >
                             <div className="flex gap-2 items-center">
                                 <img className="w-8" src="/assets/icons/play.png" alt="play" /><span className="text-xl"> Play </span>
                             </div>
@@ -62,7 +63,7 @@ export default function Navbar({ className }) {
 
 
                     <NavigationMenuItem>
-                        <NavigationMenuLink href="/venues" className={"hover:backdrop-blur-sm hover:bg-green-700/10"} >
+                        <NavigationMenuLink href="/venues" className={`${(pathName === "/venues" || (pathName.startsWith("/venues") && pathName !== "/" )) ? "backdrop-blur-sm bg-green-700/10" : ""}`} >
                             <div className="flex gap-2 items-center">
                                 <img className="w-8" src="/assets/icons/book.png" alt="book" /><span className="text-xl"> Book </span>
                             </div>
@@ -106,32 +107,12 @@ export default function Navbar({ className }) {
     )
 }
 
-const ListItem = ({ className, title, children, ...props }, ref) => {
-    return (
-        <li>
-            <NavigationMenuLink
-                ref={ref}
-                className={cn(
-                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                    className
-                )}
-                {...props}
-            >
-
-                <div className="text-sm font-medium leading-none">{title}</div>
-                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                    {children}
-                </p>
-            </NavigationMenuLink>
-        </li>
-    )
-}
-
-// ListItem.displayName = "ListItem"
-
 
 function ProfileMenu() {
     const dispatch = useAppDispatch()
+    const router = useRouter()
+    const { userData} = useAppSelector((state) => state.auth)
+
     return (
         <div>
             <DropdownMenu>
@@ -145,7 +126,7 @@ function ProfileMenu() {
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => { router.push(`/profile/${userData.id}`) }} >
                             <User />
                             <span>Profile</span>
                             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>

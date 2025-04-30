@@ -22,12 +22,12 @@ const AllEvents = () => {
     // Use this query to fetch filtered data from the server
     const query = new URLSearchParams(filters);
 
-    const { data: venues, isLoading } = useSWR("http://localhost:3000/data/events.json", fetcher)
+    const { data: events, isLoading } = useSWR("http://localhost:3000/data/events.json", fetcher)
 
     return (
-        <div className=" px-40 pt-10 bg-neutral-100">
+        <div className=" px-40 pt-10 ">
 
-            <div className="p-10 border-2 border-gray-300 rounded-3xl">
+            <div className="p-10 border-2 border-gray-300 rounded-3xl bg-gradient-to-tr from-gray-100 via-white to-gray-100">
                 <form 
                     action={() => {
                         console.log(filters, "Query: ", query);
@@ -67,7 +67,7 @@ const AllEvents = () => {
             </div>
 
             <div className='grid md:grid-cols-3 sm:grid-cols-2 gap-5 p-8 '>
-                {venues?.map((event) => (
+                {events?.map((event) => (
 
                     <Link href={`/events/${event._id}`} key={event._id}>
                         <EventCard event={event} />

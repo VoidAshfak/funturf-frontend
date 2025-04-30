@@ -20,8 +20,10 @@ export function LoginForm({
     const handleLogin = () => {
         dispatch(login(
             {
-                name: "Asif",
-                type: "PLAYER"
+                id: "u1",
+                name: "Jordan Miles",
+                type: "PLAYER",
+                profilePicture: "/assets/avatars/player-1.jpg"
             }
         ))
         router.push("/")
