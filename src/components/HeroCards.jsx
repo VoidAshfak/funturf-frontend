@@ -15,7 +15,7 @@ const HeroCards = ({activeIndex}) => {
             <div className="flex-1 px-4 py-5 sm:p-6">
                 <a href="#">
                     <p className="text-lg font-bold text-gray-900">
-                        How to write content about your photographs
+                        Lorem ipsum dolor sit amet
                     </p>
                     <p className="mt-3 text-sm font-normal leading-6 text-gray-500 line-clamp-3">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -26,7 +26,7 @@ const HeroCards = ({activeIndex}) => {
             <div className="px-4 py-5 mt-auto border-t border-gray-100 sm:px-6">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                        <p className="text-sm font-medium text-gray-900"><a href="#" title="" className="">Growth</a></p>
+                        <p className="text-sm font-medium text-gray-900"><a href="#" title="" className=""> John Doe </a></p>
                         <span className="text-sm font-medium text-gray-900">•</span>
                         <p className="text-sm font-medium text-gray-900">7 Mins Read</p>
                     </div>
