@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const CreateEvent = () => {
   return (
-    <div>CreateEvent</div>
-  )
-}
+    <div className="flex text-2xl justify-center font-bold bg-green-200">
+      CreateEvent
+    </div>
+  );
+};
 
-export default CreateEvent
+export default CreateEvent;
