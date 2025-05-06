@@ -8,9 +8,9 @@ import EventCard from '@/components/EventCard'
 const UserProfile = async ({ params }) => {
 
     const { userId } = await params
-    const user = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/users.json`).then(res => res.json()).then(data => data.find(user => user._id === userId))
+    const user = await fetch(`http://localhost:3000/data/users.json`).then(res => res.json()).then(data => data.find(user => user._id === userId))
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/events.json`)
+    const res = await fetch(`http://localhost:3000/data/events.json`)
     const events = await res.json()
 
     return (

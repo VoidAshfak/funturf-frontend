@@ -16,7 +16,7 @@ const EventDetails = async ({ params }) => {
 
     const { eventId } = await params
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/events.json`)
+    const res = await fetch(`http://localhost:3000/data/events.json`)
     const events = await res.json()
     const event = events.find(e => e._id === eventId)
 

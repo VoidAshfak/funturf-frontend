@@ -11,7 +11,7 @@ import RatingText from "@/components/RatingText"
 const VenueDetails = async ({ params }) => {
     const { venueId } = await params
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/venues.json`)
+    const res = await fetch(`http://localhost:3000/data/venues.json`)
     const venues = await res.json()
     const venue = venues.find(venue => venue._id === venueId)
 

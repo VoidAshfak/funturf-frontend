@@ -19,7 +19,7 @@ export default function CommentsSection({ currentUser }) {
         <div className="max-w-3xl p-6 rounded-2xl mx-auto space-y-6 bg-gray-50">
             <CommentForm
                 onSubmit={async (content) => {
-                    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/comments.json`);
+                    await fetch(`http://localhost:3000/data/comments.json`);
                     mutate();
                 }}
             />
