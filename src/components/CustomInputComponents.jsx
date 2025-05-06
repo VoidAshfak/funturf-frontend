@@ -5,7 +5,7 @@ import { CalendarIcon } from "lucide-react"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+// import { Calendar } from "@/components/ui/calendar"
 import {formatDate} from "@/utils/date-formatter"
 import {
     Popover,
@@ -95,12 +95,12 @@ export const DatePicker = ({date, onSelect, varient = "outline", placeholder = "
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0">
-                <Calendar
+                {/* <Calendar
                     mode="single"
                     selected={date}
                     onSelect={onSelect}
                     initialFocus
-                />
+                /> */}
             </PopoverContent>
         </Popover>
     )
