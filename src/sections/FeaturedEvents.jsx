@@ -5,7 +5,7 @@ import EventCard from '@/components/EventCard'
 
 const FeaturedEvents = async () => {
 
-    const res = await fetch("http://localhost:3000/data/events.json")
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/events.json`)
     const events = await res.json()
     // console.log(events);
 

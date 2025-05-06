@@ -22,7 +22,7 @@ const AllEvents = () => {
     // Use this query to fetch filtered data from the server
     const query = new URLSearchParams(filters);
 
-    const { data: events, isLoading } = useSWR("http://localhost:3000/data/events.json", fetcher)
+    const { data: events, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_BASE_URL}/data/events.json`, fetcher)
 
     return (
         <div className=" px-40 pt-10 ">

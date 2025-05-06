@@ -19,7 +19,7 @@ const AllVenues = () => {
     };
     // Use this query to fetch filtered data from the server
     const query = new URLSearchParams(filters);
-    const { data: venues, isLoading } = useSWR("http://localhost:3000/data/venues.json", fetcher)
+    const { data: venues, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_BASE_URL}/data/venues.json`, fetcher)
 
     return (
         <div className=" px-20 pt-10 ">
