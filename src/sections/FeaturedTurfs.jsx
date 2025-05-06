@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react'
 
 const FeaturedTurfs = async () => {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/venues.json`)
+    const res = await fetch(`http://localhost:3000/data/venues.json`)
     const venues = await res.json()
     // console.log(venues);
 
