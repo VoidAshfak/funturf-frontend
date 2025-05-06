@@ -1,7 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Bell } from "lucide-react";
 import { useState } from "react";
@@ -102,8 +102,8 @@ export default function Component() {
 
     return (
         <Popover>
-            <PopoverTrigger asChild className={cn("border border-transparent hover:border hover:border-black p-2 hover:rounded-full")}>
-                <div  className="relative  cursor-pointer" aria-label="Open notifications">
+            <PopoverTrigger asChild>
+                <div  className="relative bg-none" aria-label="Open notifications">
                     <Bell className="w-6 h-6" />
                     {unreadCount > 0 && (
                         <Badge className="absolute -top-2 left-full min-w-5 -translate-x-1/2 px-1 bg-green-500">
