@@ -12,6 +12,12 @@ export function SignupForm({
     ...props
 }) {
 
+    const skillOpts = [
+        { id: 1, name: "Beginner", value: "BEGINNER" },
+        { id: 2, name: "Intermediate", value: "INTERMEDIATE" },
+        { id: 3, name: "Advanced", value: "ADVANCED" },
+    ]
+
     const handleRegister = () => {
         // e.preventDefault();
         console.log("Registered!");
@@ -79,7 +85,7 @@ export function SignupForm({
                         <div className="flex items-center">
                             <Label htmlFor="skill">Skill Level *</Label>
                         </div>
-                        <Options label="Skill Level" placeholder={"Select your skill level"} className={"w-full"} />
+                        <Options label="Skill Level" placeholder={"Select your skill level"} className={"w-full"} options={skillOpts}/>
                     </div>
 
                 </div>

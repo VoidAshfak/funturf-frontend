@@ -7,6 +7,7 @@ import { useAppSelector, useAppDispatch } from "@/lib/hooks"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { logout } from "@/lib/features/auth/authSlice"
 import { useRouter, usePathname } from "next/navigation"
+import Notification from "@/components/Notification"
 
 import {
     NavigationMenu,
@@ -96,7 +97,8 @@ export default function Navbar({ className }) {
                     </>
                 ) : (
                     <>
-                        <div className="">
+                        <div className="flex gap-8 items-center">
+                            <Notification />
                             <ProfileMenu />
                         </div>
                     </>
