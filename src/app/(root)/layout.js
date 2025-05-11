@@ -5,7 +5,7 @@ export const metadata = {
     description: "Your go-to app for managing turf",
 };
 
-export default function RootLayout({ children }) {
+export default function AppLayout({ children }) {
     return (
         <div className={``}>
             <nav className={"navbar"}>
