@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { logout } from "@/lib/features/auth/authSlice"
 import { useRouter, usePathname } from "next/navigation"
 import Notification from "@/components/Notification"
+import { useEffect, useState } from "react"
 
 import {
     NavigationMenu,
@@ -43,7 +44,14 @@ import {
 export default function Navbar({ className }) {
 
     const {isUserLogin: userLoggedIn, userData} = useAppSelector((state) => state.auth)
+    const [hasMounted, setHasMounted] = useState(false);
     const pathName = usePathname()
+
+    useEffect(() => {
+        setHasMounted(true)
+    }, [])
+
+    if(!hasMounted) return null;
 
     return (
         <>

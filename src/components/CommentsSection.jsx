@@ -2,15 +2,10 @@
 import useSWR from 'swr';
 import CommentItem from './CommentItem';
 import CommentForm from './CommentForm';
+import comments from '../../public/data/comments.json';
 
-const fetcher = url => fetch(url).then(r => r.json());
 
 export default function CommentsSection({ currentUser }) {
-
-    const { data: comments = [], mutate } = useSWR(
-        `http://localhost:3000/data/comments.json`,
-        fetcher
-    );
 
     // building a tree
     const tree = buildTree(comments);
@@ -19,8 +14,7 @@ export default function CommentsSection({ currentUser }) {
         <div className="max-w-3xl p-6 rounded-2xl mx-auto space-y-6 bg-gray-50">
             <CommentForm
                 onSubmit={async (content) => {
-                    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/comments.json`);
-                    mutate();
+                    console.log("commented");
                 }}
             />
             {tree.map(c => (
@@ -28,7 +22,6 @@ export default function CommentsSection({ currentUser }) {
                     key={c._id}
                     comment={c}
                     currentUser={currentUser}
-                    onAction={mutate}
                 />
             ))}
         </div>

@@ -3,12 +3,9 @@ import React from 'react'
 import Link from 'next/link'
 import HeaderText from '@/components/HeaderText'
 import { ArrowRight } from 'lucide-react'
+import venues from "../../public/data/venues.json"
 
 const FeaturedTurfs = async () => {
-
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/venues.json`)
-    const venues = await res.json()
-    // console.log(venues);
 
 
     return (

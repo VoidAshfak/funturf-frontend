@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from "next/link"
 import EventCard from "@/components/EventCard"
 import CommentsSection from "@/components/CommentsSection"
+import events from "../../../../../public/data/events.json"
 import {
     Tabs,
     TabsContent,
@@ -16,8 +17,6 @@ const EventDetails = async ({ params }) => {
 
     const { eventId } = await params
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/events.json`)
-    const events = await res.json()
     const event = events.find(e => e._id === eventId)
 
     return (

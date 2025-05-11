@@ -3,15 +3,13 @@ import React from 'react'
 import {UserPlus} from 'lucide-react'
 import Link from 'next/link'
 import EventCard from '@/components/EventCard'
-
+import events from "../../../../../public/data/events.json"
+import users from "../../../../../public/data/users.json"
 
 const UserProfile = async ({ params }) => {
 
     const { userId } = await params
-    const user = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/users.json`).then(res => res.json()).then(data => data.find(user => user._id === userId))
-
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/events.json`)
-    const events = await res.json()
+    const user = users.find(user => user._id === userId)
 
     return (
         <>
