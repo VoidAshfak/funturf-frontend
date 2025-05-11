@@ -7,9 +7,8 @@ import { useState } from "react"
 import { Select, Input, DatePicker } from "@/components/CustomInputComponents"
 import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
+import events from "../../../../public/data/events.json"
 
-
-const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const AllEvents = () => {
 
@@ -21,8 +20,6 @@ const AllEvents = () => {
 
     // Use this query to fetch filtered data from the server
     const query = new URLSearchParams(filters);
-
-    const { data: events, isLoading } = useSWR(`http://localhost:3000/data/events.json`, fetcher)
 
     return (
         <div className=" px-40 pt-10 ">

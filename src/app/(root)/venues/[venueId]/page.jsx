@@ -6,13 +6,12 @@ import Map from "@/components/Map"
 import Link from "next/link"
 import { VenueCard } from "@/components/VenueCard"
 import RatingText from "@/components/RatingText"
+import venues from "../../../../../public/data/venues.json"
 
 
 const VenueDetails = async ({ params }) => {
     const { venueId } = await params
 
-    const res = await fetch(`http://localhost:3000/data/venues.json`)
-    const venues = await res.json()
     const venue = venues.find(venue => venue._id === venueId)
 
     return (

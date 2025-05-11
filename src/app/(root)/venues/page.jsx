@@ -7,19 +7,18 @@ import { useState } from "react"
 import { Select, Input, DatePicker } from "@/components/CustomInputComponents"
 import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
+import venues from "../../../../public/data/venues.json"
 
-
-const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const AllVenues = () => {
 
     const [filters, setFilters] = useState({ date: "", sport: '', playersRequired: '' });
+
     const handleChange = (e) => {
         setFilters({ ...filters, [e.target.name]: e.target.value });
     };
     // Use this query to fetch filtered data from the server
     const query = new URLSearchParams(filters);
-    const { data: venues, isLoading } = useSWR(`http://localhost:3000/data/venues.json`, fetcher)
 
     return (
         <div className=" px-20 pt-10 ">
