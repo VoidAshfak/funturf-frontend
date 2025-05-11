@@ -2,13 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 import HeaderText from '@/components/HeaderText'
 import EventCard from '@/components/EventCard'
+import events from "../../public/data/events.json"
 
 const FeaturedEvents = async () => {
-
-    const res = await fetch(`http://localhost:3000/data/events.json`)
-    const events = await res.json()
-    // console.log(events);
-
 
     return (
         <>
