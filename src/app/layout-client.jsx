@@ -1,11 +1,11 @@
 "use client"
 
-import StoreProvider from "./StoreProvider"
+// import StoreProvider from "./StoreProvider"
 
 export default function ClientLayout({ children }) {
     return (
-        <StoreProvider>
+        <div>
             {children}
-        </StoreProvider>
+        </div>
     )
 }

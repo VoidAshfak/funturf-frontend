@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { useAppSelector, useAppDispatch } from "@/lib/hooks"
+// import { useAppSelector, useAppDispatch } from "@/lib/hooks"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { logout } from "@/lib/features/auth/authSlice"
 import { useRouter, usePathname } from "next/navigation"
@@ -43,7 +43,9 @@ import {
 
 export default function Navbar({ className }) {
 
-    const {isUserLogin: userLoggedIn, userData} = useAppSelector((state) => state.auth)
+    const userLoggedIn = true
+
+    // const {isUserLogin: userLoggedIn, userData} = useAppSelector((state) => state.auth)
     const [hasMounted, setHasMounted] = useState(false);
     const pathName = usePathname()
 
@@ -119,9 +121,9 @@ export default function Navbar({ className }) {
 
 
 function ProfileMenu() {
-    const dispatch = useAppDispatch()
+    // const dispatch = useAppDispatch()
     const router = useRouter()
-    const { userData} = useAppSelector((state) => state.auth)
+    // const { userData} = useAppSelector((state) => state.auth)
 
     return (
         <div>
@@ -136,7 +138,7 @@ function ProfileMenu() {
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
-                        <DropdownMenuItem onClick={() => { router.push(`/profile/${userData.id}`) }} >
+                        <DropdownMenuItem onClick={() => {  }} >
                             <User />
                             <span>Profile</span>
                             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -159,7 +161,7 @@ function ProfileMenu() {
 
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={() => dispatch(logout())}>
+                    <DropdownMenuItem onClick={() => {}}>
                         <LogOut className="text-red-400" />
                         <span className="text-red-400" >Log out</span>
                         <DropdownMenuShortcut className="text-red-400">⇧⌘Q</DropdownMenuShortcut>
