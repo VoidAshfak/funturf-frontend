@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { configureStore } from "@reduxjs/toolkit";
-import authSlice from "@/lib/features/auth/authSlice"
+import { configureStore } from '@reduxjs/toolkit';
+import authSlice from '@/lib/features/auth/authSlice';
 import {
     persistStore,
     persistReducer,
@@ -10,29 +10,48 @@ import {
     PAUSE,
     PERSIST,
     PURGE,
-    REGISTER
-} from "redux-persist"
-import storage from "redux-persist/lib/storage"
+    REGISTER,
+} from 'redux-persist';
+import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
+
+const createNoopStorage = () => {
+    return {
+        getItem() {
+            return Promise.resolve(null);
+        },
+        setItem() {
+            return Promise.resolve();
+        },
+        removeItem() {
+            return Promise.resolve();
+        },
+    };
+};
+
+const storage =
+    typeof window !== 'undefined'
+        ? createWebStorage('local')
+        : createNoopStorage();
 
 const persistConfig = {
-    key: "root",
-    storage
-}
+    key: 'root',
+    storage,
+};
 
 const persistedReducer = persistReducer(persistConfig, authSlice);
 
-export const makeStore = () => {
-    return configureStore({
+export const makeStore = () =>
+    configureStore({
         reducer: {
-            auth: persistedReducer
+            auth: persistedReducer,
         },
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            },
-        }),
-    })
-}
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+                serializableCheck: {
+                    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+                },
+            }),
+    });
 
 export const store = makeStore();
-export const persistor = persistStore(store)
+export const persistor = persistStore(store);
