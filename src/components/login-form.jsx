@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { LogIn } from "lucide-react"
-import {useAppDispatch, useAppSelector} from "@/lib/hooks"
+// import {useAppDispatch, useAppSelector} from "@/lib/hooks"
 import { login } from "@/lib/features/auth/authSlice"
 import { useRouter } from "next/navigation"
 
@@ -14,18 +14,18 @@ export function LoginForm({
     ...props
 }) {
 
-    const dispatch = useAppDispatch()
+    // const dispatch = useAppDispatch()
     const router = useRouter()
 
     const handleLogin = () => {
-        dispatch(login(
-            {
-                id: "u1",
-                name: "Jordan Miles",
-                type: "PLAYER",
-                profilePicture: "/assets/avatars/player-1.jpg"
-            }
-        ))
+        // dispatch(login(
+        //     {
+        //         id: "u1",
+        //         name: "Jordan Miles",
+        //         type: "PLAYER",
+        //         profilePicture: "/assets/avatars/player-1.jpg"
+        //     }
+        // ))
         router.push("/")
     }
     return (
