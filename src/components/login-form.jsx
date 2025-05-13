@@ -5,31 +5,30 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { LogIn } from "lucide-react"
-// import {useAppDispatch, useAppSelector} from "@/lib/hooks"
-import { login } from "@/lib/features/auth/authSlice"
 import { useRouter } from "next/navigation"
+import { login } from "@/server-actions/sign-in"
+import { useActionState, useEffect } from "react"
+import { useUser } from "@/context/UserContet"
 
 export function LoginForm({
     className,
     ...props
 }) {
 
-    // const dispatch = useAppDispatch()
+    const { setUser } = useUser();
     const router = useRouter()
+    const [state, formAction, isPending] = useActionState(login, {});
 
-    const handleLogin = () => {
-        // dispatch(login(
-        //     {
-        //         id: "u1",
-        //         name: "Jordan Miles",
-        //         type: "PLAYER",
-        //         profilePicture: "/assets/avatars/player-1.jpg"
-        //     }
-        // ))
-        router.push("/")
-    }
+    useEffect(() => {
+        if (state.success === true) {
+            setUser(state.user)
+            router.push("/")
+        }
+    }, [state])
+
+
     return (
-        <form action={handleLogin} className={cn("flex flex-col gap-6", className)} {...props}>
+        <form action={formAction} className={cn("flex flex-col gap-6", className)} {...props}>
             <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-2xl font-bold">Login to your account</h1>
                 <p className="text-muted-foreground text-sm text-balance">
@@ -39,7 +38,13 @@ export function LoginForm({
             <div className="grid gap-6">
                 <div className="grid gap-3">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="me@google.com" required />
+                    <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="me@google.com"
+                        required
+                    />
                 </div>
                 <div className="grid gap-3">
                     <div className="flex items-center">
@@ -48,7 +53,12 @@ export function LoginForm({
                             Forgot your password?
                         </a>
                     </div>
-                    <Input id="password" type="password" required />
+                    <Input
+                        id="password"
+                        name="password"
+                        type="password"
+                        required
+                    />
                 </div>
                 <Button type="submit" className="w-full bg-green-600">
                     <LogIn className="mr-2 h-4 w-4" />
