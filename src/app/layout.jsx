@@ -1,5 +1,5 @@
 import "./globals.css";
-import ClientLayout from "./layout-client";
+import {ContextProvider} from "@/context/UserContet";
 
 export const metadata = {
     title: "Funturf",
@@ -10,9 +10,9 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-                <ClientLayout>
+                <ContextProvider>
                     {children}
-                </ClientLayout>
+                </ContextProvider>
             </body>
         </html>
     );

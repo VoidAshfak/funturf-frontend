@@ -1,14 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-// import { useAppSelector, useAppDispatch } from "@/lib/hooks"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { logout } from "@/lib/features/auth/authSlice"
-import { useRouter, usePathname } from "next/navigation"
+import { usePathname } from "next/navigation"
 import Notification from "@/components/Notification"
-import { useEffect, useState } from "react"
 
 import {
     NavigationMenu,
@@ -21,7 +17,6 @@ import {
     LogOut,
     Settings,
     User,
-    UserPlus,
     Users,
 } from "lucide-react"
 
@@ -31,29 +26,20 @@ import {
     DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuPortal,
     DropdownMenuSeparator,
     DropdownMenuShortcut,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-
+import NavbarSkeleton from "./skeleton/NavbarSkeleton"
+import { useUser } from "@/context/UserContet"
 
 export default function Navbar({ className }) {
 
-    const userLoggedIn = true
-
-    // const {isUserLogin: userLoggedIn, userData} = useAppSelector((state) => state.auth)
-    const [hasMounted, setHasMounted] = useState(false);
     const pathName = usePathname()
+    const { user, loading } = useUser()
 
-    useEffect(() => {
-        setHasMounted(true)
-    }, [])
 
-    if(!hasMounted) return null;
+    if(loading) return <NavbarSkeleton />
 
     return (
         <>
@@ -65,29 +51,27 @@ export default function Navbar({ className }) {
                 <NavigationMenuList>
 
                     <NavigationMenuItem>
-                        <NavigationMenuLink href="/events" className={`${(pathName === "/events" || (pathName.startsWith("/events") && pathName !== "/" )) ? "backdrop-blur-sm bg-green-700/10" : ""}`} >
+                        <NavigationMenuLink href="/events" className={`${(pathName === "/events" || (pathName.startsWith("/events") && pathName !== "/")) ? "backdrop-blur-sm bg-green-700/10" : ""}`} >
                             <div className="flex gap-2 items-center">
                                 <img className="w-8" src="/assets/icons/play.png" alt="play" /><span className="text-xl"> Play </span>
                             </div>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
 
-
                     <NavigationMenuItem>
-                        <NavigationMenuLink href="/venues" className={`${(pathName === "/venues" || (pathName.startsWith("/venues") && pathName !== "/" )) ? "backdrop-blur-sm bg-green-700/10" : ""}`} >
+                        <NavigationMenuLink href="/venues" className={`${(pathName === "/venues" || (pathName.startsWith("/venues") && pathName !== "/")) ? "backdrop-blur-sm bg-green-700/10" : ""}`} >
                             <div className="flex gap-2 items-center">
                                 <img className="w-8" src="/assets/icons/book.png" alt="book" /><span className="text-xl"> Book </span>
                             </div>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
 
-
                 </NavigationMenuList>
             </NavigationMenu>
 
 
             <div className="mr-10">
-                {!userLoggedIn ? (
+                {!user ? (
                     <>
                         <div>
                             <Button
@@ -121,9 +105,16 @@ export default function Navbar({ className }) {
 
 
 function ProfileMenu() {
-    // const dispatch = useAppDispatch()
-    const router = useRouter()
-    // const { userData} = useAppSelector((state) => state.auth)
+
+    const { setUser } = useUser()
+
+    const logout = async (prevState, formData) => {
+        await fetch("http://localhost:8080/api/v1/users/logout", {
+            method: "POST",
+        })
+
+        setUser(null)
+    };
 
     return (
         <div>
@@ -138,7 +129,7 @@ function ProfileMenu() {
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
-                        <DropdownMenuItem onClick={() => {  }} >
+                        <DropdownMenuItem onClick={() => { }} >
                             <User />
                             <span>Profile</span>
                             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -157,11 +148,9 @@ function ProfileMenu() {
                             <Users />
                             <span>Team</span>
                         </DropdownMenuItem>
-
-
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={() => {}}>
+                    <DropdownMenuItem onClick={logout}>
                         <LogOut className="text-red-400" />
                         <span className="text-red-400" >Log out</span>
                         <DropdownMenuShortcut className="text-red-400">⇧⌘Q</DropdownMenuShortcut>
