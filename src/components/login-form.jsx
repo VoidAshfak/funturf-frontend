@@ -6,26 +6,44 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { LogIn } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { login } from "@/server-actions/sign-in"
+// import { login } from "@/server-actions/sign-in"
 import { useActionState, useEffect } from "react"
 import { useUser } from "@/context/UserContet"
+
+
 
 export function LoginForm({
     className,
     ...props
 }) {
 
-    const { setUser } = useUser();
     const router = useRouter()
-    const [state, formAction, isPending] = useActionState(login, {});
+    const { setUser } = useUser();
 
-    useEffect(() => {
-        if (state.success === true) {
-            setUser(state.user)
+    const login = async (prevState, formData) => {
+
+        const res = await fetch("http://localhost:8080/api/v1/users/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                email: formData.get("email"),
+                password: formData.get("password")
+            })
+        })
+        const data = await res.json()
+
+        if (data?.data?.user) {
+            setUser(data.data.user)
             router.push("/")
+        } else {
+            setUser(null)
         }
-    }, [state])
+    };
 
+    const [state, formAction, isPending] = useActionState(login, {});
 
     return (
         <form action={formAction} className={cn("flex flex-col gap-6", className)} {...props}>
