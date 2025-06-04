@@ -111,7 +111,7 @@ function ProfileMenu() {
     const logout = async (prevState, formData) => {
         await fetch("http://localhost:8080/api/v1/users/logout", {
             method: "POST",
-credentials: "include"
+            credentials: "include"
         })
 
         setUser(null)
