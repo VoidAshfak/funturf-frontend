@@ -6,24 +6,49 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Options } from "./Options"
+import Link from "next/link"
+import { useActionState } from "react"
+import { Loader2 } from "lucide-react"
+
+
+const signIn = async (prevState, formData) => {
+
+    const res = await fetch("http://localhost:8080/api/v1/users/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify({
+            name: formData.get("name"),
+            email: formData.get("email"),
+            password: formData.get("password"),
+            phone: formData.get("phone"),
+            address: formData.get("address"),
+            bio: formData.get("bio"),
+            role: formData.get("role")
+        })
+    })
+    const data = await res.json()
+
+    console.log(data);
+    
+}
 
 export function SignupForm({
     className,
     ...props
 }) {
 
+    const [prevState, formAction, loading] = useActionState(signIn, {})
+
     const skillOpts = [
-        { id: 1, name: "Beginner", value: "BEGINNER" },
-        { id: 2, name: "Intermediate", value: "INTERMEDIATE" },
-        { id: 3, name: "Advanced", value: "ADVANCED" },
+        { id: 1, name: "User", value: "USER" },
+        { id: 2, name: "Admin", value: "ADMIN" },
     ]
 
-    const handleRegister = () => {
-        // e.preventDefault();
-        console.log("Registered!");
-    }
     return (
-        <form action={handleRegister} className={cn("flex flex-col gap-6", className)} {...props}>
+        <form action={formAction} className={cn("flex flex-col gap-6", className)} {...props}>
             {/* Heading */}
             <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-2xl font-bold">Register User</h1>
@@ -33,72 +58,123 @@ export function SignupForm({
             </div>
 
 
-            <div className="grid grid-cols-2 gap-6">
-                <div className="grid row-span-4 gap-6">
-
-                    <div className="grid gap-3">
-                        <Label htmlFor="name">Full Name *</Label>
-                        <Input id="name" type="text" placeholder="me@google.com" required />
-                    </div>
-
-                    <div className="grid gap-3">
-                        <Label htmlFor="username">Username *
-                            <div className="
-                            "></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 bg-white rounded-xl shadow-md">
+                {/* Left Column */}
+                <div className="space-y-6">
+                    {/* Full Name */}
+                    <div className="space-y-2">
+                        <Label htmlFor="name">
+                            Full Name <span className="text-red-500">*</span>
                         </Label>
-                        <Input id="username" type="text" placeholder="Jhon Doe" required />
+                        <Input
+                            id="name"
+                            name="name"
+                            type="text"
+                            placeholder="John Doe"
+                            required
+                            className="w-full border rounded-md px-4 py-2"
+                        />
                     </div>
 
-                    <div className="grid gap-3">
-                        <Label htmlFor="phone">Phone Number *
-                            <div className="
-                            "></div>
+                    
+
+                    {/* Phone Number */}
+                    <div className="space-y-2">
+                        <Label htmlFor="phone">
+                            Phone Number <span className="text-red-500">*</span>
                         </Label>
-                        <Input id="phone" type="text" placeholder="01788 888888" required />
+                        <Input
+                            id="phone"
+                            name="phone"
+                            type="text"
+                            placeholder="01788 888888"
+                            required
+                            className="w-full border rounded-md px-4 py-2"
+                        />
                     </div>
 
-                    <div className="grid gap-3">
-                        <div className="flex items-center">
-                            <Label htmlFor="bio">Bio</Label>
-                        </div>
-                        <Textarea id="bio" type="text" rows="5" />
+                    {/* Bio */}
+                    <div className="space-y-2">
+                        <Label htmlFor="bio">Bio</Label>
+                        <Textarea
+                            id="bio"
+                            name="bio"
+                            rows="4"
+                            placeholder="Tell us about yourself..."
+                            className="w-full border rounded-md px-4 py-2"
+                        />
                     </div>
-
                 </div>
 
-
-                <div className="grid row-span-3 gap-6">
-
-                    <div className="grid gap-3">
-                        <Label htmlFor="email">Email *</Label>
-                        <Input id="email" type="email" placeholder="me@google.com" required />
+                {/* Right Column */}
+                <div className="space-y-6">
+                    {/* Email */}
+                    <div className="space-y-2">
+                        <Label htmlFor="email">
+                            Email <span className="text-red-500">*</span>
+                        </Label>
+                        <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="me@google.com"
+                            required
+                            className="w-full border rounded-md px-4 py-2"
+                        />
                     </div>
 
-                    <div className="grid gap-3">
-                        <div className="flex items-center">
-                            <Label htmlFor="password">Password *</Label>
-                        </div>
-                        <Input id="password" type="password" required />
+                    {/* Password */}
+                    <div className="space-y-2">
+                        <Label htmlFor="password">
+                            Password <span className="text-red-500">*</span>
+                        </Label>
+                        <Input
+                            id="password"
+                            name="password"
+                            type="password"
+                            required
+                            className="w-full border rounded-md px-4 py-2"
+                        />
                     </div>
 
-                    <div className="grid gap-3">
-                        <div className="flex items-center">
-                            <Label htmlFor="skill">Skill Level *</Label>
-                        </div>
-                        <Options label="Skill Level" placeholder={"Select your skill level"} className={"w-full"} options={skillOpts}/>
+                    {/* Skill Level */}
+                    <div className="space-y-2">
+                        <Label htmlFor="skillLevel">
+                            Role <span className="text-red-500">*</span>
+                        </Label>
+                        <Options
+                            label="Role"
+                            name="role"
+                            placeholder="Select your role"
+                            className="w-full"
+                            options={skillOpts}
+                        />
                     </div>
 
+                    {/* Address */}
+                    <div className="space-y-2">
+                        <Label htmlFor="address">Address</Label>
+                        <Textarea
+                            id="address"
+                            name="address"
+                            rows="4"
+                            placeholder="123 Main Street, City, Country"
+                            className="w-full border rounded-md px-4 py-2"
+                        />
+                    </div>
                 </div>
             </div>
+
             <div className="flex flex-col items-center justify-center gap-4 text-center text-sm">
-                <Button type="submit" className="w-1/3">
+                <Button type="submit" className="w-1/3" disabled={loading}>
+                    {loading && <Loader2 className="animate-spin" />}
                     Sign Up
                 </Button>
                 <div>
                     Already have an account?{" "}
-                    <a href="/login" className="underline underline-offset-4">
+                    <Link href="/login" className="underline underline-offset-4">
                         Login
-                    </a>
+                    </Link>
                 </div>
             </div>
         </form>
