@@ -1,5 +1,6 @@
 import "./globals.css";
-import {ContextProvider} from "@/context/UserContet";
+import { ContextProvider } from "@/context/UserContet";
+import QueryProvider from './QueryProvider'
 
 export const metadata = {
     title: "Funturf",
@@ -11,7 +12,9 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body>
                 <ContextProvider>
-                    {children}
+                    <QueryProvider>
+                        {children}
+                    </QueryProvider>
                 </ContextProvider>
             </body>
         </html>

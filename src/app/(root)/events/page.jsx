@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import EventCard from "@/components/EventCard"
-import useSWR from "swr"
 import { useState } from "react"
 import { Select, Input, DatePicker } from "@/components/CustomInputComponents"
 import { Button } from "@/components/ui/button"

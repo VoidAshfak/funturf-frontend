@@ -1,5 +1,4 @@
 'use client';
-import useSWR from 'swr';
 import CommentItem from './CommentItem';
 import CommentForm from './CommentForm';
 import comments from '../../public/data/comments.json';

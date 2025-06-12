@@ -89,7 +89,7 @@ const ProfileCard = ({ user }) => {
 
 
                         <div className='mt-8 mr-2'>
-                            <Button variant={"outline"} className={"cursor-pointer"}> <UserPlus/> Follow</Button>
+                            <Button variant={"outline"} className={"cursor-pointer"}> <UserPlus/>Connect</Button>
                         </div>
                     </div>
                     <div className="mt-6 py-6 border-t border-slate-200 text-center">
