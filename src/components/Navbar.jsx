@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import ProfileMenu from "./ProfileMenu";
 import Notification from "./Notification";
+import NavItemLink from "./NavItemLink";
 
 export default async function Navbar({ className }) {
     const session = await getServerSession(authOptions);
@@ -18,25 +19,19 @@ export default async function Navbar({ className }) {
                 <NavigationMenuList>
 
                     <NavigationMenuItem>
-                        <NavigationMenuLink
-                            href="/events"
-                        // className={`${(pathName === "/events" || (pathName.startsWith("/events") && pathName !== "/")) ? "backdrop-blur-sm bg-green-700/10" : ""}`}
-                        >
+                        <NavItemLink path="/events">
                             <div className="flex gap-2 items-center">
                                 <img className="w-8" src="/assets/icons/play.png" alt="play" /><span className="text-xl"> Play </span>
                             </div>
-                        </NavigationMenuLink>
+                        </NavItemLink>
                     </NavigationMenuItem>
 
                     <NavigationMenuItem>
-                        <NavigationMenuLink
-                            href="/venues"
-                        // className={`${(pathName === "/venues" || (pathName.startsWith("/venues") && pathName !== "/")) ? "backdrop-blur-sm bg-green-700/10" : ""}`}
-                        >
+                        <NavItemLink path="/venues">
                             <div className="flex gap-2 items-center">
                                 <img className="w-8" src="/assets/icons/book.png" alt="book" /><span className="text-xl"> Book </span>
                             </div>
-                        </NavigationMenuLink>
+                        </NavItemLink>
                     </NavigationMenuItem>
 
                 </NavigationMenuList>
