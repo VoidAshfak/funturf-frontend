@@ -1,15 +1,12 @@
 "use client"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { cn } from "@/lib/utils"
 import { LogIn } from "lucide-react"
-import { useRouter } from "next/navigation"
-// import { login } from "@/server-actions/sign-in"
-import { useActionState, useEffect } from "react"
-import { useUser } from "@/context/UserContet"
-
+import { useActionState, useState } from "react"
+import { signIn } from "next-auth/react"
 
 
 export function LoginForm({
@@ -17,29 +14,20 @@ export function LoginForm({
     ...props
 }) {
 
-    const router = useRouter()
-    const { setUser } = useUser();
+    const [errorOccured, setErrorOccured] = useState(false);
 
     const login = async (prevState, formData) => {
-
-        const res = await fetch("http://localhost:8080/api/v1/users/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                email: formData.get("email"),
-                password: formData.get("password")
-            })
-        })
-        const data = await res.json()
-
-        if (data?.data?.user) {
-            setUser(data.data.user)
-            router.push("/")
+        const result = await signIn("credentials", {
+            email: formData.get("email"),
+            password: formData.get("password"),
+            redirect: false
+        });
+        if (!result.ok) {
+            setErrorOccured(true);
+            return
         } else {
-            setUser(null)
+            setErrorOccured(false);
+            window.location.href = "/";
         }
     };
 
@@ -52,6 +40,7 @@ export function LoginForm({
                 <p className="text-muted-foreground text-sm text-balance">
                     Enter your email below to login to your account
                 </p>
+                {errorOccured && <p className="text-red-500">Invalid Email or Password</p>}
             </div>
             <div className="grid gap-6">
                 <div className="grid gap-3">
