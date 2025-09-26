@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar"
+import AuthProvider from "@/components/AuthProvider";
 
 export const metadata = {
     title: "Funturf",
@@ -7,11 +8,13 @@ export const metadata = {
 
 export default function AppLayout({ children }) {
     return (
-        <div className={``}>
-            <nav className={"navbar"}>
-                <Navbar />
-            </nav>
-            {children}
-        </div>
+        <AuthProvider>
+            <div className={``}>
+                <nav className={"navbar"}>
+                    <Navbar />
+                </nav>
+                {children}
+            </div>
+        </AuthProvider>
     );
 }
