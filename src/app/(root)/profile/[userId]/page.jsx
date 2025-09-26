@@ -5,6 +5,7 @@ import Link from 'next/link'
 import EventCard from '@/components/EventCard'
 import events from "../../../../../public/data/events.json"
 import users from "../../../../../public/data/users.json"
+import ConnectButton from '@/components/ConnectButton'
 
 const UserProfile = async ({ params }) => {
 
@@ -88,9 +89,7 @@ const ProfileCard = ({ user }) => {
 
 
 
-                        <div className='mt-8 mr-2'>
-                            <Button variant={"outline"} className={"cursor-pointer"}> <UserPlus/>Connect</Button>
-                        </div>
+                        <ConnectButton />
                     </div>
                     <div className="mt-6 py-6 border-t border-slate-200 text-center">
                         <div className="flex flex-wrap justify-center">

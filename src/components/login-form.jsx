@@ -4,11 +4,9 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { LogIn } from "lucide-react"
-import { useRouter } from "next/navigation"
-// import { login } from "@/server-actions/sign-in"
+import { LoaderIcon, LogIn } from "lucide-react"
+import api from "@/utils/api.js"
 import { useActionState, useEffect } from "react"
-import { useUser } from "@/context/UserContet"
 
 
 
@@ -17,33 +15,24 @@ export function LoginForm({
     ...props
 }) {
 
-    const router = useRouter()
-    const { setUser } = useUser();
-
-    const login = async (prevState, formData) => {
-
-        const res = await fetch("http://localhost:8080/api/v1/users/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
+    const handleLogin = async (prevState, FormData) => {
+        try {
+            const response = await api.post("/users/login", {
+                email: FormData.get("email"),
+                password: FormData.get("password")
             },
-            credentials: "include",
-            body: JSON.stringify({
-                email: formData.get("email"),
-                password: formData.get("password")
-            })
-        })
-        const data = await res.json()
+            {
+                withCredentials: true
+            }
+        )
 
-        if (data?.data?.user) {
-            setUser(data.data.user)
-            router.push("/")
-        } else {
-            setUser(null)
+            console.log("Login response: ", response)
+        } catch (error) {
+            console.log("Error calling login api.");
         }
-    };
+    }
 
-    const [state, formAction, isPending] = useActionState(login, {});
+    const [state, formAction, isPending] = useActionState(handleLogin, {});
 
     return (
         <form action={formAction} className={cn("flex flex-col gap-6", className)} {...props}>
@@ -79,7 +68,7 @@ export function LoginForm({
                     />
                 </div>
                 <Button type="submit" className="w-full bg-green-600">
-                    <LogIn className="mr-2 h-4 w-4" />
+                    {!isPending ? <LogIn className="mr-2 h-4 w-4" /> : <LoaderIcon className="mr-2 h-4 w-4"/>}
                     Login
                 </Button>
                 <div

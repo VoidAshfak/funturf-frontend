@@ -1,6 +1,6 @@
 [
     {
-        "_id": "u1",
+        "_id": "68223a0a3a6604bc366c7299",
         "username": "hoopmaster21",
         "email": "hoopmaster21@example.com",
         "fullName": "Jordan Miles",
@@ -41,5 +41,19 @@
         "friends": [
             "u1"
         ]
+    },
+    {
+        "_id": "682245a8eb0f19515f753ef1",
+        "email": "ashfakasif@gmail.com",
+        "password": "$2b$10$nUPL8jzrJkqwJrB9.YWvi.pCV4GOfXBJVv3QeP/I22A/2W9aSyrw.",
+        "name": "Ashfak Asif",
+        "address": "Jamalpur, Padma R/A, Rajshahi",
+        "bio": "I am a striker (CF, CAM, RW, LW)",
+        "phone": "01783980758",
+        "sportsPreferences": "FOOTBALL",
+        "eventsJoined": [],
+        "role": "PLAYER",
+        "rating": 4.5,
+        "refreshToken": null
     }
 ]
