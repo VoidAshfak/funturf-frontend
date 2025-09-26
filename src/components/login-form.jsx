@@ -1,13 +1,12 @@
 "use client"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { LoaderIcon, LogIn } from "lucide-react"
-import api from "@/utils/api.js"
-import { useActionState, useEffect } from "react"
-
+import { cn } from "@/lib/utils"
+import { LogIn } from "lucide-react"
+import { useActionState, useState } from "react"
+import { signIn } from "next-auth/react"
 
 
 export function LoginForm({
@@ -15,20 +14,20 @@ export function LoginForm({
     ...props
 }) {
 
-    const handleLogin = async (prevState, FormData) => {
-        try {
-            const response = await api.post("/users/login", {
-                email: FormData.get("email"),
-                password: FormData.get("password")
-            },
-            {
-                withCredentials: true
-            }
-        )
+    const [errorOccured, setErrorOccured] = useState(false);
 
-            console.log("Login response: ", response)
-        } catch (error) {
-            console.log("Error calling login api.");
+    const login = async (prevState, formData) => {
+        const result = await signIn("credentials", {
+            email: formData.get("email"),
+            password: formData.get("password"),
+            redirect: false
+        });
+        if (!result.ok) {
+            setErrorOccured(true);
+            return
+        } else {
+            setErrorOccured(false);
+            window.location.href = "/";
         }
     }
 
@@ -41,6 +40,7 @@ export function LoginForm({
                 <p className="text-muted-foreground text-sm text-balance">
                     Enter your email below to login to your account
                 </p>
+                {errorOccured && <p className="text-red-500">Invalid Email or Password</p>}
             </div>
             <div className="grid gap-6">
                 <div className="grid gap-3">

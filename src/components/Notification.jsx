@@ -79,7 +79,7 @@ function Dot({ className }) {
     );
 }
 
-export default function Component() {
+export default function Notification() {
     const [notifications, setNotifications] = useState(initialNotifications);
     const unreadCount = notifications.filter((n) => n.unread).length;
 
