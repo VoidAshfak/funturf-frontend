@@ -73,7 +73,7 @@ export default function EventCreationForm({ setOpen }) {
 
             const data = await response.json();
             if (data?.success) {
-                setOpen(false)
+                // setOpen(false)
             }
         } catch (error) {
             console.error(error)

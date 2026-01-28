@@ -1,7 +1,9 @@
 import EventListWrapper from "@/components/EventListWrapper";
 import FilterVenueInput from "@/components/FilterVanueInput";
 import Image from "next/image";
-import CreateNewEvent from "./_components/CreateNewEvent";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+// import EventCreationForm from "./_components/EventCreationForm";
 
 export default function AllEvents() {
     return (
@@ -18,7 +20,16 @@ export default function AllEvents() {
 
                 <div className="absolute inset-0 flex flex-col justify-center gap-10 text-white px-10">
                     <h1 className="text-3xl md:text-5xl font-bold uppercase">Find Your Game</h1>
-                    <CreateNewEvent />
+
+                    <Link href="/events/create">
+                        <Button
+                            className="text-white bg-green-500 hover:cursor-pointer hover:bg-green-700 w-fit"
+                        >
+                            Create New Event
+                        </Button>
+                    </Link>
+
+                    {/* <EventCreationForm /> */}
                 </div>
             </div>
 
